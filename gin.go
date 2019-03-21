@@ -35,7 +35,7 @@ func Run() error {
 	lakawei_discover.Register(ServiceName, fmt.Sprintf("%s:%s", ServiceAddr, ServicePort))
 	errCh := make(chan error, 1)
 	go func() {
-		errCh <- HttpServer.Engine.Run(ServicePort)
+		errCh <- HttpServer.Engine.Run(":" + ServicePort)
 	}()
 	return waitSignal(errCh)
 }
